@@ -20,7 +20,7 @@ Features
 
 9. Support
 
-✨ Features
+# ✨ Features
 Content Generation
 
 1. 📝 AI-powered captions for Instagram, Twitter, LinkedIn, Facebook
@@ -54,15 +54,15 @@ Technical
 Live Demo (Coming Soon)
 Note: Requires Ollama backend to be running locally
 
-🛠️ Installation
+# 🛠️ Installation
 Prerequisites
-Python 3.8+
+- Python 3.8+
 
-Ollama installed (installation guide)
+- Ollama installed (installation guide)
 
-Node.js (for optional frontend builds)
+- Node.js (for optional frontend builds)
 
-Setup
+# Setup
 
 1. Clone the repository:
 
@@ -85,7 +85,7 @@ cd social-media-generator
 5. Access the app at:
    http://localhost:7860
 
-⚙️ Configuration
+# ⚙️ Configuration
 
 Modify app.py for these settings:
 
@@ -101,7 +101,7 @@ MAX_IMAGE_SIZE	(512, 512)	                Max image dimensions
 
 JPEG_QUALITY	  75	                        Image compression quality
 
-🖥️ Usage
+# 🖥️ Usage
 1. Select Platform
 
 -  Choose from Instagram, Twitter, LinkedIn, or Facebook
@@ -128,7 +128,7 @@ JPEG_QUALITY	  75	                        Image compression quality
    
 -  Click "Generate Content" and use the one-click copy buttons
 
-🛠️ Tech Stack
+# 🛠️ Tech Stack
 1. Backend
 
 -  Python 3 - Core language
@@ -155,7 +155,7 @@ JPEG_QUALITY	  75	                        Image compression quality
 
 -  GitHub Actions - CI/CD (Coming Soon)
 
-📚 API Reference
+# 📚 API Reference
 
 1. Endpoints POST /generate - Main content generation endpoint
 
