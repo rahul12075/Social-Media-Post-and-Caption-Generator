@@ -22,6 +22,7 @@ Support
 
 ✨ Features
 Content Generation
+
 📝 AI-powered captions for Instagram, Twitter, LinkedIn, Facebook
 
 #️⃣ Relevant hashtag suggestions
