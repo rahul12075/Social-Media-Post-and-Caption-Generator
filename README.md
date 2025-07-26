@@ -68,7 +68,7 @@ Prerequisites
 
    git clone https://github.com/yourusername/social-media-generator.git
 
-cd social-media-generator
+   cd social-media-generator
 
 2. Install Python dependencies:
 
@@ -164,3 +164,7 @@ JPEG_QUALITY	  75	                        Image compression quality
 # Contributing
 
 - Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+# Support
+
+If you encounter any issues, please open an issue on GitHub
