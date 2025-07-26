@@ -141,7 +141,7 @@ JPEG_QUALITY	  75	                        Image compression quality
 
 -  HTTPx - Async HTTP client
 
-2.Frontend
+2. Frontend
 
 -  Bootstrap 5 - Responsive UI
 
