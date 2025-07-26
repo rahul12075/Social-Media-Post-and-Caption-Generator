@@ -23,31 +23,32 @@ Support
 ✨ Features
 Content Generation
 
-📝 AI-powered captions for Instagram, Twitter, LinkedIn, Facebook
+1. 📝 AI-powered captions for Instagram, Twitter, LinkedIn, Facebook
 
-#️⃣ Relevant hashtag suggestions
+2. #️⃣ Relevant hashtag suggestions
 
-😊 Emoji recommendations
+3. 😊 Emoji recommendations
 
-� Multiple content styles (15+ options)
+4. � Multiple content styles (15+ options)
 
 Advanced Options
-🌍 Multilingual support (10+ languages)
 
-🖼️ Image context analysis
+1. 🌍 Multilingual support (10+ languages)
 
-📋 One-click copy functionality
+2. 🖼️ Image context analysis
 
-🎨 Dark/Light mode ready UI
+3. 📋 One-click copy functionality
+
+4. 🎨 Dark/Light mode ready UI
 
 Technical
-⚡ Async processing for fast generation
+1. ⚡ Async processing for fast generation
 
-🖼️ Image compression and optimization
+2. 🖼️ Image compression and optimization
 
-🔒 Secure file handling
+3. 🔒 Secure file handling
 
-📱 Mobile-responsive design
+4. 📱 Mobile-responsive design
 
 🎥 Demo
 Live Demo (Coming Soon)
