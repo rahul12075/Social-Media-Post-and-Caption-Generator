@@ -62,7 +62,8 @@ Ollama installed (installation guide)
 
 Node.js (for optional frontend builds)
 
-
+Setup
+Clone the repository:
 
 
 
