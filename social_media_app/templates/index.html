@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Posts & Caption Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("{{ url_for('static', filename='smm3.webp') }}");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 1; 
+            z-index: -1;
+        }
+
+        body {
+            background-color: #1a1a1a; 
+            color: #f8f9fa;
+        }
+
+        .container {
+            background-color: rgb(26, 25, 25);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(32, 31, 31, 0.025);
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control, .form-select {
+            background-color: #333;
+            color: #fffdfd;
+            border: 1px solid #fff;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #444;
+            color: #fff;
+            border-color: #0d6efd;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .results-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .hashtag {
+            display: inline-block;
+            background-color: #0d6efd;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            margin: 3px;
+            font-size: 0.9em;
+        }
+        
+        .alert {
+            border-radius: 8px;
+        }
+
+        /* Copy button styles */
+        .copy-btn {
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: #0d6efd;
+            transform: translateY(-1px);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .copy-btn.copied {
+            background-color: #6c757d;
+        }
+
+        .content-container {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .content-container h4 {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+        <div class="position-absolute top-0 end-0 mt-3 me-3">
+        <div class="d-flex">
+            <a href="/signin" class="btn btn-outline-light me-2">Sign in</a>
+            <a href="/signup" class="btn btn-primary">Sign up</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-center mb-4">
+           <h1 class="display-5 fw-bold" style="
+    color: #fff;
+    text-shadow: 0 0 5px #3a86ff, 0 0 10px #3a86ff, 0 0 15px #3a86ff;
+    animation: glow 3s ease-in-out infinite alternate;
+">
+    SOCIAL MEDIA POSTS & CAPTION GENERATOR
+</h1>
+
+<style>
+    @keyframes glow {
+        from { text-shadow: 0 0 5px #3a86ff; }
+        to { text-shadow: 0 0 10px #3a86ff, 0 0 20px #3a86ff; }
+    }
+</style>
+           <p class="lead neon-subtitle" style="
+    font-size: 1.25rem;
+    color: #fff;
+    color: #fff;
+    text-shadow: 0 0 5px #3a86ff, 0 0 10px #3a86ff, 0 0 15px #3a86ff;
+    animation: glow 3s ease-in-out infinite alternate;
+">
+    Generate engaging content for your social platforms instantly (Powered by Ollama)
+    <span class="neon-emoji" style="
+        display: inline-block;
+        animation: float 5s ease-in-out infinite, 
+                   pulse 1.5s infinite alternate;
+        margin-left: 6px;
+    ">😺</span>
+</p>
+</style>
+          
+<style>
+    @keyframes flicker {
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+            text-shadow: 
+                0 0 5px #00f2fe,
+                0 0 10px #00f2fe,
+                0 0 20px #00f2fe,
+                0 0 40px #4facfe;
+        }
+        20%, 24%, 55% {
+            text-shadow: 
+                0 0 2px #00f2fe,
+                0 0 5px #00f2fe,
+                0 0 10px #00f2fe,
+                0 0 20px #4facfe;
+        }
+    }
+    
+    @keyframes pulse {
+        0% { opacity: 0.7; }
+        100% { opacity: 1; }
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    .neon-subtitle:hover {
+        animation: none;
+        text-shadow: 
+            0 0 10px #00f2fe,
+            0 0 20px #00f2fe,
+            0 0 30px #00f2fe,
+            0 0 40px #4facfe;
+    }
+</style>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="app_choice" class="form-label">Social Media Platform</label>
+                    <select class="form-select" id="app_choice" name="app_choice">
+                        {% for app in app_choices %}
+                        <option value="{{ app }}">{{ app }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="lang" class="form-label">Language</label>
+                    <select class="form-select" id="lang" name="lang">
+                        {% for code, name in languages.items() %}
+                        <option value="{{ code }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+<div class="col-12">
+    <label for="uploaded_image" class="form-label">Upload Image (Optional - Max 5MB)</label>
+    <div class="image-upload-container border rounded p-4 text-center" 
+         id="dropZone"
+         style="border: 2px dashed #666; background-color: rgba(255,255,255,0.05); cursor: pointer;">
+        <div id="uploadContent">
+            <i class="bi bi-cloud-arrow-up fs-1" style="color: #0d6efd;"></i>
+            <p class="mt-2">Drag & drop your image here or click to browse</p>
+            <p class="small" style="color: #0d6efd;">Supports: JPG, PNG, WEBP (Max 5MB)</p>
+            <input class="d-none" type="file" id="uploaded_image" name="uploaded_image" accept="image/jpeg, image/png, image/webp">
+            <button type="button" class="btn btn-primary mt-2" style="background-color: #0d6efd; border-color: #0d6efd;">Choose File</button>
+        </div>
+        <div id="previewContainer" class="d-none">
+            <img id="imagePreview" src="#" alt="Preview" class="img-fluid rounded" style="max-height: 200px;">
+            <div class="d-flex justify-content-center mt-2">
+                <button type="button" class="btn btn-danger btn-sm me-2" id="removeImage">Remove</button>
+                <span id="fileInfo" class="small text-muted align-self-center"></span>
+            </div>
+        </div>
+        <div id="loadingIndicator" class="d-none">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Processing image...</p>
+        </div>
+        <div id="errorMessage" class="alert alert-danger mt-2 d-none"></div>
+    </div>
+</div>
+                <div class="col-md-6">
+                    <label for="theme" class="form-label">Theme</label>
+                    <select class="form-select" id="theme" name="theme">
+                         {% for t in themes %}
+                        <option value="{{ t }}">{{ t|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                 <div class="col-md-6">
+                    <label for="emoji_count" class="form-label">Number of Emojis</label>
+                    <input type="number" class="form-control" id="emoji_count" name="emoji_count" value="5" min="1" max="20">
+                </div>
+
+<div class="col-md-6">
+    <div class="form-check form-switch mt-3">
+        <input class="form-check-input" type="checkbox" id="add_hashtags" name="add_hashtags" checked>
+        <label class="form-check-label" for="add_hashtags"></label><b>Add Hashtags</b></label>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-check form-switch mt-3">
+        <input class="form-check-input" type="checkbox" id="add_emojis" name="add_emojis" checked>
+        <label class="form-check-label" for="add_emojis"><b>Add Emojis</b></label>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <label for="format_style" class="form-label">Format Style</label>
+    <select class="form-select" id="format_style" name="format_style">
+        <option value="casual" selected>Casual</option>
+        <option value="friendly">Friendly</option>
+        <option value="professional">Professional</option>
+        <option value="diplomatic">Diplomatic</option>
+        <option value="confident">Confident</option>
+        <option value="middleschool">Middle school</option>
+        <option value="highschool">High school</option>
+        <option value="academic">Academic</option>
+        <option value="simplified">Simplified</option>
+        <option value="vivid">Vivid</option>
+        <option value="empathetic">Empathetic</option>
+        <option value="luxury">Luxury</option>
+        <option value="engaging">Engaging</option>
+        <option value="direct">Direct</option>
+        <option value="persuasive">Persuasive</option>
+        <option value="custom">Custom...</option>
+    </select>
+</div>
+<div class="col-md-6" id="custom_format_container" style="display: none;">
+    <label for="custom_format" class="form-label">Custom Format</label>
+    <input type="text" class="form-control" id="custom_format" name="custom_format" placeholder="Enter custom format style">
+</div>
+<div class="col-md-6">
+    <label for="variant_count" class="form-label">Caption Variants</label>
+    <select class="form-select" id="variant_count" name="variant_count">
+        <option value="1">1 Variant</option>
+        <option value="3">3 Variants</option>
+        <option value="5" selected>5 Variants</option>
+        <option value="10">10 Variants</option>
+    </select>
+</div>
+                <div class="col-12">
+                    <label for="keywords" class="form-label">Keywords / "Other" Theme Description</label>
+                    <input type="text" class="form-control" id="keywords" name="keywords" placeholder="e.g., minimalist, cozy, winter morning">
+                </div>
+            </div>
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary btn-lg">✨ Generate Content</button>
+            </div>
+        </form>
+
+{% if caption or hashtags_list or emojis %}
+<div class="results-card">
+    <div class="row">
+        {% if uploaded_img_data %}
+        <div class="col-md-4 text-center">
+            <h4>Image Preview</h4>
+            <img src="data:image/png;base64,{{ uploaded_img_data }}" class="img-fluid rounded shadow" alt="Uploaded Image">
+        </div>
+        <div class="col-md-8">
+        {% else %}
+        <div class="col-12">
+        {% endif %}
+        {% if captions %}
+<div class="content-container">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4>Generated Captions</h4>
+        <button class="copy-btn" onclick="copyToClipboard('captions-text', this)">Copy All</button>
+    </div>
+    <div id="captions-text">
+        <select class="form-select mb-3" id="caption-selector">
+            {% for caption in captions %}
+            <option value="{{ loop.index }}">Variant {{ loop.index }}</option>
+            {% endfor %}
+        </select>
+        <div id="caption-display">
+            {% for caption in captions %}
+            <div class="caption-variant {% if loop.first %}d-block{% else %}d-none{% endif %}" 
+                 id="caption-{{ loop.index }}">
+                <p class="lead">{{ caption }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+            <div class="content-loader" id="contentLoader" style="display: none;">
+                <div class="neon-loader">
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                    <div class="dot"></div>
+                    <div class="scan-line"></div>
+                </div>
+                <div class="loading-text">Generating Content</div>
+            </div>
+
+            <div id="generatedContent">
+                {% if emojis %}
+                <div class="content-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4>Emojis</h4>
+                        <button class="copy-btn" onclick="copyToClipboard('emojis-text', this)">Copy</button>
+                    </div>
+                    <p id="emojis-text" style="font-size: 1.5rem;">{{ emojis }}</p>
+                </div>
+                {% endif %}
+
+                {% if caption %}
+                <div class="content-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4>Generated Caption</h4>
+                        <button class="copy-btn" onclick="copyToClipboard('caption-text', this)">Copy</button>
+                    </div>
+                    <p id="caption-text" class="lead">{{ caption }}</p>
+                </div>
+                {% endif %}
+
+                {% if hashtags_list %}
+                <div class="content-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4>Hashtags</h4>
+                        <button class="copy-btn" onclick="copyToClipboard('hashtags-text', this)">Copy</button>
+                    </div>
+                    <div id="hashtags-text">
+                        {% for tag in hashtags_list %}
+                            <span class="hashtag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" id="hashtags-string" value="{{ hashtags_string }}">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function copyToClipboard(elementId, button) {
+            let textToCopy;
+            
+            if (elementId === 'hashtags-text') {
+                textToCopy = document.getElementById('hashtags-string').value;
+            } else {
+                const element = document.getElementById(elementId);
+                textToCopy = element.innerText || element.textContent;
+            }
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+
+                button.classList.add('copied');
+                button.textContent = 'Copied!';
+
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.textContent = 'Copy';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                button.textContent = 'Error';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('uploaded_image');
+        const uploadContent = document.getElementById('uploadContent');
+        const previewContainer = document.getElementById('previewContainer');
+        const imagePreview = document.getElementById('imagePreview');
+        const removeBtn = document.getElementById('removeImage');
+        const chooseFileBtn = dropZone.querySelector('button');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const errorMessage = document.getElementById('errorMessage');
+        const fileInfo = document.getElementById('fileInfo');
+        
+
+        const MAX_FILE_SIZE = 5 * 1024 * 1024; 
+        const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+
+        chooseFileBtn.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('click', (e) => {
+            if (e.target === dropZone) fileInput.click();
+        });
+
+        fileInput.addEventListener('change', handleFileSelect);
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            dropZone.classList.add('drag-over');
+        }
+
+        function unhighlight() {
+            dropZone.classList.remove('drag-over');
+        }
+
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length) {
+                fileInput.files = files;
+                handleFileSelect({ target: fileInput });
+            }
+        }
+
+        function handleFileSelect(e) {
+            errorMessage.classList.add('d-none');
+            const file = e.target.files[0];
+            
+            if (!file) return;
+
+            if (!ALLOWED_TYPES.includes(file.type)) {
+                showError('Invalid file type. Please upload a JPG, PNG, or WEBP image.');
+                return;
+            }
+   
+            if (file.size > MAX_FILE_SIZE) {
+                showError('File too large. Maximum size is 5MB.');
+                return;
+            }
+
+            loadingIndicator.classList.remove('d-none');
+ 
+            setTimeout(() => {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    uploadContent.classList.add('d-none');
+                    previewContainer.classList.remove('d-none');
+                    loadingIndicator.classList.add('d-none');
+
+                    const fileSizeMB = (file.size / (1024*1024)).toFixed(2);
+                    fileInfo.textContent = `${file.type.split('/')[1].toUpperCase()} • ${fileSizeMB}MB`;
+                }
+                
+                reader.onerror = function() {
+                    loadingIndicator.classList.add('d-none');
+                    showError('Error reading file. Please try again.');
+                }
+                
+                reader.readAsDataURL(file);
+            }, 500);
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.remove('d-none');
+            fileInput.value = '';
+            loadingIndicator.classList.add('d-none');
+        }
+
+        removeBtn.addEventListener('click', function() {
+            fileInput.value = '';
+            imagePreview.src = '#';
+            uploadContent.classList.remove('d-none');
+            previewContainer.classList.add('d-none');
+            errorMessage.classList.add('d-none');
+        });
+    });
+</script>
+<script>
+
+    document.getElementById('caption-selector').addEventListener('change', function() {
+   
+        document.querySelectorAll('.caption-variant').forEach(el => {
+            el.classList.add('d-none');
+        });
+   
+        const selectedId = 'caption-' + this.value;
+        document.getElementById(selectedId).classList.remove('d-none');
+    });
+
+    function copyToClipboard(elementId, button) {
+        let textToCopy;
+        if (elementId === 'captions-text') {
+            const activeCaption = document.querySelector('.caption-variant:not(.d-none)');
+            textToCopy = activeCaption ? activeCaption.textContent.trim() : '';
+        } 
+    }
+</script>
+
+</body>
+</html>
